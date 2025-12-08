@@ -45,7 +45,61 @@ This repository matches the required Capstone folder structure:
 
 ---
 
-##  Quick Start Guide
+### Step 1: Create the Database Container
+Run this as the **SYS/Admin** user to set up the Pluggable Database (PDB).
+
+```sql
+-- Create PDB and Developer User
+CREATE PLUGGABLE DATABASE MON_28056_KEVIN_INVENTORY_DB
+ADMIN USER AdminKevin IDENTIFIED BY Kevin
+FILE_NAME_CONVERT = ('/pdbseed/', '/MON_28056_KEVIN_INVENTORY_DB/');
+
+ALTER PLUGGABLE DATABASE MON_28056_KEVIN_INVENTORY_DB OPEN;
+ALTER PLUGGABLE DATABASE MON_28056_KEVIN_INVENTORY_DB SAVE STATE;
+
+ALTER SESSION SET CONTAINER = MON_28056_KEVIN_INVENTORY_DB;
+
+CREATE USER kevin_dev IDENTIFIED BY Kevin123;
+GRANT CONNECT, RESOURCE, DBA TO kevin_dev;
+```  
+
+### Step 2: Deploy the Schema
+1.  Open **SQL Developer**.
+2.  Connect as `kevin_dev` (Password: `Kevin123`).
+3.  Run the script located in: `database/scripts/MON_28056_FULL_SCRIPT.sql`.
+
+### Step 3: Verify & Test
+Run the following checks to confirm the installation:
+
+```sql
+-- 1. Verify Data Generation (Should show 400+ rows)
+SELECT COUNT(*) FROM Products;
+
+-- 2. Test Security Trigger (Should fail on Mon-Fri)
+UPDATE Products SET Quantity = 500 WHERE Product_ID = 1;
+
+-- 3. View Audit Trail
+SELECT * FROM audit_log ORDER BY action_date DESC;
+```
+4.  Key Features & Testing Results
+The system has been rigorously tested to ensure data integrity and security compliance.
+
+Feature,Description,Status
+Transaction Management,The register_sale procedure atomically updates inventory levels and logs the transaction.,✅ Passed
+Security Rules,CRITICAL: Updates are strictly BLOCKED on Weekdays (Mon-Fri) via trg_audit_products.,✅ Passed
+Auditing,The audit_pkg uses Autonomous Transactions to log every access attempt to AUDIT_LOG.,✅ Passed
+Business Intelligence,Analytical queries use Window Functions to calculate sales trends.,✅ Passed
+
+The reason "Step 2" and "Step 3" look like they are trapped inside "Step 1" is that the **code block was not closed** properly in your Markdown file.
+
+In Markdown, you start a code box with three backticks (`) and you **must** end it with three backticks (`) before starting a new section title.
+
+Here is the **corrected version**. I have fixed the closing tags so that Step 2 and Step 3 appear as separate, bold headers outside the grey boxes.
+
+### **Copy & Paste this into your `README.md`**
+
+````markdown
+## ⚡ Quick Start Guide
 Follow these steps to deploy the system on a local Oracle 19c/21c environment.
 
 ### Step 1: Create the Database Container
@@ -64,16 +118,19 @@ ALTER SESSION SET CONTAINER = MON_28056_KEVIN_INVENTORY_DB;
 
 CREATE USER kevin_dev IDENTIFIED BY Kevin123;
 GRANT CONNECT, RESOURCE, DBA TO kevin_dev;
+````
 
 ### Step 2: Deploy the Schema
-Open SQL Developer.
 
-Connect as kevin_dev (Password: Kevin123).
+1.  Open **SQL Developer**.
+2.  Connect as `kevin_dev` (Password: `Kevin123`).
+3.  Run the script located in: `database/scripts/MON_28056_FULL_SCRIPT.sql`.
 
-Run the script located in: database/scripts/MON_28056_FULL_SCRIPT.sql.
+### Step 3: Verify & Test
 
-**### Step 3: Verify & Test**
 Run the following checks to confirm the installation:
+
+```sql
 -- 1. Verify Data Generation (Should show 400+ rows)
 SELECT COUNT(*) FROM Products;
 
@@ -82,16 +139,30 @@ UPDATE Products SET Quantity = 500 WHERE Product_ID = 1;
 
 -- 3. View Audit Trail
 SELECT * FROM audit_log ORDER BY action_date DESC;
+```
 
-Business Intelligence Features
-The system includes built-in analytics functions:
+-----
 
-get_inventory_value(): Calculates total capital tied up in stock.
+## 4\. 🔑 Key Features & Testing Results
 
-Sales Trend Analysis: Uses Window Functions (LAG, LEAD) to compare daily sales performance.
+The system has been rigorously tested to ensure data integrity and security compliance.
 
-Stock Alerts: check_stock_status() function instantly flags items below reorder thresholds.
+| Feature | Description | Status |
+| :--- | :--- | :--- |
+| **Transaction Management** | The `register_sale` procedure atomically updates inventory levels and logs the transaction. | ✅ **Passed** |
+| **Security Rules** | **CRITICAL:** Updates are strictly **BLOCKED** on Weekdays (Mon-Fri) via `trg_audit_products`. | ✅ **Passed** |
+| **Auditing** | The `audit_pkg` uses **Autonomous Transactions** to log every access attempt to `AUDIT_LOG`. | ✅ **Passed** |
+| **Business Intelligence** | Analytical queries use **Window Functions** to calculate sales trends. | ✅ **Passed** |
 
-© 2025 Kevin (ID: 28056) | Adventist University of Central Africa
+-----
 
+## 5\. 📚 Documentation Links
 
+  * **[Entity Relationship Diagram (ERD)](https://www.google.com/search?q=documentation/ERD_Diagram.png)**
+  * **[Business Process Model](https://www.google.com/search?q=documentation/PhaseII_Process.pdf)**
+  * **[Data Dictionary](https://www.google.com/search?q=documentation/Data_Dictionary.md)**
+
+<!-- end list -->
+
+```
+```
