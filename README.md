@@ -65,7 +65,7 @@ ALTER SESSION SET CONTAINER = MON_28056_KEVIN_INVENTORY_DB;
 CREATE USER kevin_dev IDENTIFIED BY Kevin123;
 GRANT CONNECT, RESOURCE, DBA TO kevin_dev;
 
-**### Step 2: Deploy the Schema**
+### Step 2: Deploy the Schema
 Open SQL Developer.
 
 Connect as kevin_dev (Password: Kevin123).
@@ -93,4 +93,5 @@ Sales Trend Analysis: Uses Window Functions (LAG, LEAD) to compare daily sales p
 Stock Alerts: check_stock_status() function instantly flags items below reorder thresholds.
 
 © 2025 Kevin (ID: 28056) | Adventist University of Central Africa
+
 
