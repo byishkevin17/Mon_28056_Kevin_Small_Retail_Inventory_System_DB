@@ -1,6 +1,6 @@
 # Smart Retail Inventory System (Oracle PL/SQL Capstone)
-
-**Student Name:** Kevin  
+**FINAL EXAM** 2025-2026
+**Student Name:** BYISHIMO Kevin  
 **Student ID:** 28056  
 **Group:** Monday (MON)  
 **Course:** INSY 8311 - Database Development with PL/SQL  
@@ -81,14 +81,15 @@ UPDATE Products SET Quantity = 500 WHERE Product_ID = 1;
 -- 3. View Audit Trail
 SELECT * FROM audit_log ORDER BY action_date DESC;
 ```
-4.  Key Features & Testing Results
+## 4.  Key Features & Testing Results
 The system has been rigorously tested to ensure data integrity and security compliance.
 
-Feature,Description,Status
-Transaction Management,The register_sale procedure atomically updates inventory levels and logs the transaction.,✅ Passed
-Security Rules,CRITICAL: Updates are strictly BLOCKED on Weekdays (Mon-Fri) via trg_audit_products.,✅ Passed
-Auditing,The audit_pkg uses Autonomous Transactions to log every access attempt to AUDIT_LOG.,✅ Passed
-Business Intelligence,Analytical queries use Window Functions to calculate sales trends.,✅ Passed
+| Feature | Description | Status |
+| :--- | :--- | :--- |
+| **Transaction Management** | The `register_sale` procedure atomically updates inventory levels and logs the transaction. | ✅ **Passed** |
+| **Security Rules** | **CRITICAL:** Updates are strictly **BLOCKED** on Weekdays (Mon-Fri) via `trg_audit_products`. | ✅ **Passed** |
+| **Auditing** | The `audit_pkg` uses **Autonomous Transactions** to log every access attempt to `AUDIT_LOG`. | ✅ **Passed** |
+| **Business Intelligence** | Analytical queries use **Window Functions** to calculate sales trends. | ✅ **Passed** |
 
 
 -----
@@ -103,5 +104,6 @@ Business Intelligence,Analytical queries use Window Functions to calculate sales
 
 ```
 ```
+
 
 
