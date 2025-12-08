@@ -90,12 +90,6 @@ Security Rules,CRITICAL: Updates are strictly BLOCKED on Weekdays (Mon-Fri) via 
 Auditing,The audit_pkg uses Autonomous Transactions to log every access attempt to AUDIT_LOG.,✅ Passed
 Business Intelligence,Analytical queries use Window Functions to calculate sales trends.,✅ Passed
 
-The reason "Step 2" and "Step 3" look like they are trapped inside "Step 1" is that the **code block was not closed** properly in your Markdown file.
-
-In Markdown, you start a code box with three backticks (`) and you **must** end it with three backticks (`) before starting a new section title.
-
-Here is the **corrected version**. I have fixed the closing tags so that Step 2 and Step 3 appear as separate, bold headers outside the grey boxes.
-
 
 -----
 
@@ -109,4 +103,5 @@ Here is the **corrected version**. I have fixed the closing tags so that Step 2 
 
 ```
 ```
+
 
