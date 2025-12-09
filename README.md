@@ -94,16 +94,22 @@ The system has been rigorously tested to ensure data integrity and security comp
 
 -----
 
-## 5\. 📚 Documentation Links
+## 5. 📚 Documentation Links
 
-  * **[Entity Relationship Diagram (ERD)](https://www.google.com/search?q=documentation/ERD_Diagram.png)**
-  * **[Business Process Model](https://www.google.com/search?q=documentation/PhaseII_Process.pdf)**
-  * **[Data Dictionary](https://www.google.com/search?q=documentation/Data_Dictionary.md)**
+* **[Entity Relationship Diagram (ERD)](documentation/ERD%202.png)**
+  * *Visual schema of Suppliers, Products, and Sales.*
+* **[Business Process Model](documentation/Phasell.drawio.png)**
+  * *Swimlane diagram showing the "Order-to-Sale" workflow.*
+* **[Data Dictionary](documentation/Data_Dictionary.md)**
+  * *Detailed definition of all tables, columns, and constraints.*
+* **[Presentation Slides](documentation/MON_28056_Kevin_Retail_Inventory_Presentation.pptx)**
+  * *Final Capstone presentation.*
 
 <!-- end list -->
 
 ```
 ```
+
 
 
 
